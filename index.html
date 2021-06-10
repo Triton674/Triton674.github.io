@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>MVP - Guess with friends</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"> 
+	<script src="app.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js" defer></script>
+	<script src="/socket.io/socket.io.js" defer></script>
+</head>
+<body data-page="login">
+	<header>
+		
+	</header>
+	<section class="section--background">
+		<div class="fond fond--cross"></div>
+		<div class="fond fond--circle"></div>
+		<div class="fond fond--triangle"></div>
+		<div class="fond fond--cross"></div>
+		<div class="fond fond--circle"></div>
+		<div class="fond fond--triangle"></div>
+		<div class="fond fond--cross"></div>
+		<div class="fond fond--circle"></div>
+		<div class="fond fond--triangle"></div>
+		<div class="fond fond--cross"></div>
+		<div class="fond fond--circle"></div>
+		<div class="fond fond--triangle"></div>
+		<div class="fond fond--cross"></div>
+		<div class="fond fond--circle"></div>
+		<div class="fond fond--triangle"></div>
+		<div class="fond fond--cross"></div>
+		<div class="fond fond--circle"></div>
+		<div class="fond fond--triangle"></div>
+		<div class="fond--desktop">
+			<div class="fond fond--cross"></div>
+			<div class="fond fond--circle"></div>
+			<div class="fond fond--triangle"></div>
+			<div class="fond fond--cross"></div>
+			<div class="fond fond--circle"></div>
+			<div class="fond fond--triangle"></div>
+			<div class="fond fond--cross"></div>
+			<div class="fond fond--circle"></div>
+			<div class="fond fond--triangle"></div>
+			<div class="fond fond--cross"></div>
+			<div class="fond fond--circle"></div>
+			<div class="fond fond--triangle"></div>
+			<div class="fond fond--cross"></div>
+			<div class="fond fond--circle"></div>
+			<div class="fond fond--triangle"></div>
+			<div class="fond fond--cross"></div>
+			<div class="fond fond--circle"></div>
+			<div class="fond fond--triangle"></div>
+		</div>
+	</section>
+	<section class="bloctuto hidden">
+		<button class="close--button"></button>
+		<h2>Comment jouer&nbsp;?</h2>
+			<h3>Créer une partie</h3>
+				<p>Configurez votre salle en choisissant le nombre de jeu dans la partie ainsi que le temps et le nombre de joueurs.</p>
+			<h3>Rejoindre</h3>
+				<p>Rejoignez vos amis en entrant la seed de la room.</p>
+		<h2>Les jeux&nbsp;?</h2>
+			<div class="bloctuto--depixel">
+				<h3>Dépixelisation</h3>
+				<div class="tuto--dia">
+					<button class="moins"><</button>
+					<div class="exemple exemple--depixel"></div>
+					<button class="plus">></button>
+				</div>
+					<p>Une image d'un personnage, d'une jaquette, d'une scène est pixélisé au maximum, celle-ci se dépixelise avec le temps, plus on répond vite, plus on gagne de points</p>
+			</div>
+			<div class="hidden">
+				<h3>Déflou</h3>
+				<div class="tuto--dia">
+					<button class="moins"><</button>
+					<div class="exemple exemple--depixel"></div>
+					<button class="plus">></button>
+				</div>
+					<p>Une image d'un personnage, d'une jaquette, d'une scène est pixélisé au maximum, celle-ci se dépixelise avec le temps, plus on répond vite, plus on gagne de points</p>
+			</div>
+			<div class="hidden">
+				<h3>Dézoom</h3>
+				<div class="tuto--dia">
+					<button class="moins"><</button>
+					<div class="exemple exemple--depixel"></div>
+					<button class="plus">></button>
+				</div>
+					<p>Une image d'un personnage, d'une jaquette, d'une scène est pixélisé au maximum, celle-ci se dépixelise avec le temps, plus on répond vite, plus on gagne de points</p>
+			</div>
+			<div class="hidden">
+				<h3>Synopsis foireux</h3>
+				<div class="tuto--dia">
+					<button class="moins"><</button>
+					<div class="exemple exemple--depixel"></div>
+					<button class="plus">></button>
+				</div>
+					<p>Une image d'un personnage, d'une jaquette, d'une scène est pixélisé au maximum, celle-ci se dépixelise avec le temps, plus on répond vite, plus on gagne de points</p>
+			</div>
+			<div class="hidden">
+				<h3>Puzzle</h3>
+				<div class="tuto--dia">
+					<button class="moins"><</button>
+					<div class="exemple exemple--depixel"></div>
+					<button class="plus">></button>
+				</div>
+					<p>Une image d'un personnage, d'une jaquette, d'une scène est pixélisé au maximum, celle-ci se dépixelise avec le temps, plus on répond vite, plus on gagne de points</p>
+
+			</div>
+		
+	</section>
+	
+	<section id="#login" class="login">
+		<h1 class="title">Guess with <span class="coloryellow">friends</span></h1>
+		<form class="input--changepage" input-datapage="menu">
+			<input class="inputstyle inputusername" type="text" name="username" value="USERNAME"></input>
+		</form>
+	</section>
+	<section id="#menu" class="menu">
+		<h2 class="title">Guess with <span class="coloryellow">friends</span></h2>
+		
+		<ul class="list list--menu">
+			<li><button class="btn btnmenu btnmenu--crearoom btn--changepage" button-datapage="crearoom">Créer une partie</button></li>
+			<li><button class="btn btnmenu btnmenu--joinroom btn--changepage" button-datapage="joinroom">Rejoindre</button></li>
+			<li><button class="btn btnmenu btnmenu--howtoplay">Comment jouer&nbsp;?</button></li>
+		</ul>
+		
+	</section>
+	<section id="#crearoom" class="crearoom">
+		<button class="btnretour btn--changepage" button-datapage="menu"><  RETOUR</button>
+		<h2 class="title">Customisation <span class="coloryellow">de la partie</span></h2>
+			<ul class="list list-theme">
+				<li class="btn theme videogame selected">Jeux-vidéo</li>
+				<li class="btn theme cinema">Cinéma</li>
+				<li class="btn theme serie">Série</li>
+				<li class="btn theme cartoon">Dessin animé</li>
+				<li class="btn theme music">Musique</li>
+			</ul> 
+			<div class="custom--parametre">
+				<ul class="list list--config">
+					<li><p>Dépixelisation</p><div><button class="moins moins--depixel"><</button><p class="value--config value--depixel">2</p><button class="plus plus--depixel">></button></div></li>
+					<li><p>Dézoom</p><div><button class="moins moins--dezoom"><</button><p class="value--config value--dezoom">2</p><button class="plus plus--dezoom">></button></div></li>
+					<li><p>Défloutage</p><div><button class="moins moins--deflou"><</button><p class="value--config value--deflou">2</p><button class="plus plus--deflou">></button></div></li>
+					<li><p>Synopsis</p><div><button class="moins moins--synopsis"><</button><p class="value--config value--synopsis">2</p><button class="plus plus--synopsis">></button></div></li>
+					<li><p>Puzzle</p><div><button class="moins moins--puzzle"><</button><p class="value--config value--puzzle">2</p><button class="plus plus--puzzle">></button></div></li>
+					<li><p>Temps/questions</p><div><button class="moins moins--timequest"><</button><p class="value--config value--timequest">30<span class="miniature">s</span></p><button class="plus plus--timequest">></button></div></li>
+					<li><p>Joueurs max</p><div><button class="moins moins--playermax"><</button><p class="value--config value--playermax">5</p><button class="plus plus--playermax">></button></div></li>
+				</ul>
+			</div>
+		<button class="btn btn--gotohub btn--changepage" button-datapage="hub">Créer</button>
+	</section>
+
+	<section id="#joinroom" class="joinroom">
+		<button class="btnretour btn--changepage" button-datapage="menu"><  RETOUR</button>
+		<h2 class="title">Rejoindre <span class="coloryellow">une partie</span></h2>
+			<form class="input--changepage" input-datapage="hub">
+				<label>Seed de la room</label>
+				<input class="inputstyle inputjoinroom" type="text" name="seedroom" value=""></input>
+			</form>
+	</section>
+
+	<section id="#hub" class="hub">
+		<button class="btnretour btn--changepage" button-datapage="menu"><  QUITTER</button>
+		<h2 class="title">HUB</h2>
+		<div class="flexhub">
+			<div class="resumeconfig">
+
+			</div>
+			<button class="btn btn--edit btn--changepage" button-datapage="crearoom">EDIT</button>
+		</div>
+			<div class="playerpresent">
+				<ul class="list list--playerinhub">
+					
+				</ul>
+			</div>
+			<p class="seedgived"></p>
+			<button class="btn btn--changepage btn--start" button-datapage="game">Commencer</button>
+	</section>
+
+	<section id="#game" class="game"> 
+		<h2 class="title--reponse hidden"></h2>
+		<div class="gamearea hidden">
+			<div class="gamearea--flou"></div>
+		</div>
+		<button class="buzzer hidden"></button>
+		<form class="input">
+			<input class="input--reponse hidden" type="text" id="reponse" value="">
+		</form>
+		<button class="btn btn--suivant hidden">Suivant</button>
+		<button class="btn--changepage" button-datapage="classement">Terminer</button>
+	</section>
+	<section id="#classement" class="classement">
+		
+
+	</section>
+</body>
+</html>
